@@ -8,9 +8,9 @@ services:
 
   database: #Name of DB Host
     container_name: database
-    image: jaskipper/alpine-mariadb
-    env_file:
-      - .env
+    image: nimmis/docker-alpine-mariadb
+    environment:
+      RACK_ENV: development
 
   churchcrm:
     container_name: churchcrm
