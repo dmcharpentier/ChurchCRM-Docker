@@ -4,6 +4,8 @@ MAINTAINER ChurchCRM
 RUN apk update
 RUN apk upgrade
 
+RUN rm -rf /var/cache/apk/*
+
 RUN mkdir /web/churchcrm
 
 COPY httpd.conf /etc/apache2
