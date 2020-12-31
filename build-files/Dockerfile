@@ -2,18 +2,7 @@ FROM jaskipper/alpine-apache-php7
 MAINTAINER ChurchCRM
 
 RUN apk update
-RUN apk upgrade --repository http://dl-4.alpinelinux.org/alpine/edge/community \
-                --repository https://nl.alpinelinux.org/alpine/edge/main
-
-RUN apk add --no-cache \
-            jq \
-            php7-session@community \
-            php7-pdo@community \
-            php7-xml@community \
-            php7-exif@community \
-            php7-pdo_mysql@community \
-            php7-gettext@community \
-            php7-iconv@community
+RUN apk upgrade
 
 RUN mkdir /web/churchcrm
 
