@@ -23,7 +23,7 @@ services:
 
   churchcrm:
     container_name: churchcrm
-    build: ./build-files
+    image: mydarkfire/churchcrm
     ports:
       - "8084:80"
     environment:
