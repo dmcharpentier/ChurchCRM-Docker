@@ -2,7 +2,7 @@
 # from this file by first filling in your password and db info in the .env
 # file and then running "docker-compose build", "docker-compose up" in terminal.
 
-version: '2'
+version: '3'
 
 services:
 
@@ -10,12 +10,30 @@ services:
     container_name: database
     image: nimmis/docker-alpine-mariadb
     environment:
-      RACK_ENV: development
+      - MYSQL_DB_HOST=database
+      - MYSQL_ROOT_PASSWORD=changeme
+      - MYSQL_DATABASE=churchcrm
+      - MYSQL_USER=churchcrm
+      - MYSQL_PASSWORD=changeme
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == worker]
 
   churchcrm:
     container_name: churchcrm
     build: ./build-files
     ports:
-      - "80:80"
-    env_file:
-      - .env
+      - "8084:80"
+    environment:
+      - MYSQL_DB_HOST=database
+      - MYSQL_ROOT_PASSWORD=changeme
+      - MYSQL_DATABASE=churchcrm
+      - MYSQL_USER=churchcrm
+      - MYSQL_PASSWORD=changeme
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
