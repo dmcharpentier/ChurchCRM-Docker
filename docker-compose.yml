@@ -10,11 +10,11 @@ services:
     container_name: database
     image: nimmis/docker-alpine-mariadb
     environment:
-      - MYSQL_DB_HOST=database
-      - MYSQL_ROOT_PASSWORD=changeme
-      - MYSQL_DATABASE=churchcrm
-      - MYSQL_USER=churchcrm
-      - MYSQL_PASSWORD=changeme
+      - MARIADB_DB_HOST=database
+      - MARIADB_ROOT_PASSWORD=changeme
+      - MARIADB_DATABASE=churchcrm
+      - MARIADB_USER=churchcrm
+      - MARIADB_PASSWORD=changeme
     deploy:
       mode: replicated
       replicas: 1
@@ -27,11 +27,11 @@ services:
     ports:
       - "8084:80"
     environment:
-      - MYSQL_DB_HOST=database
-      - MYSQL_ROOT_PASSWORD=changeme
-      - MYSQL_DATABASE=churchcrm
-      - MYSQL_USER=churchcrm
-      - MYSQL_PASSWORD=changeme
+      - MARIADB_DB_HOST=database
+      - MARIADB_ROOT_PASSWORD=changeme
+      - MARIADB_DATABASE=churchcrm
+      - MARIADB_USER=churchcrm
+      - MARIADB_PASSWORD=changeme
     deploy:
       mode: replicated
       replicas: 1
